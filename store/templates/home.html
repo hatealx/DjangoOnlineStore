@@ -1,0 +1,82 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Épicerie Générale - Votre boutique en ligne de produits alimentaires</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+        <h1>Alimentation Générale ElizAb</h1>
+        <p>Votre boutique en ligne de produits alimentaires et divers de qualité</p>
+    </div>
+    
+    <div class="account">
+        {% if request.user.is_authenticated %}
+          <p>Bienvenue, {{ request.user.username }}</p>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-black">Se déconnecter</button><br>,<br>
+            <a href="{% url 'asetting' %}" class="btn btn-black">Parametre de compte</a>
+         </form>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-black">Se connecter</a>
+            <a href="{% url 'register' %}" class="btn btn-black">Créer un Compte</a>
+        {% endif %}
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#produits-fs">Produits frais</a></li>
+      <li><a href="#epicerie">Épicerie</a></li>
+      <li><a href="#boissons">Boissons</a></li>
+      <li><a href="#produits-cosmetique">Produits Cosmétique</a></li>
+      <li><a href="#promotions">Promotions</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <h2>Nos produits vedettes</h2>
+
+    <div class="product-grid">
+      {% for product in products %}
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="{{product.image.url}}" alt="{{product.name}}" width="200" height="200">
+          </div>
+          <h3>{{product.name}}</h3>
+          <p class="price">{{product.price}} FCfa</p>
+          <a href="{% url 'order_product' product.id %}" class="btn">Commander</a>
+
+        </div>
+      {% endfor %}
+    </div>
+    
+    <section class="about-us">
+      <h2>Pourquoi choisir Épicerie Générale ElizAb?</h2>
+      <ul class="features">
+        <li><i class="fas fa-check-circle"></i> Produits frais et de qualité</li>
+        <li><i class="fas fa-truck"></i> Livraison rapide à domicile</li>
+        <li><i class="fas fa-leaf"></i> Soutien aux producteurs locaux</li>
+        <li><i class="fas fa-leaf"></i> Large gamme de produits bio et éthiques</li>
+        <li><i class="fas fa-headset"></i> Service client réactif et à l'écoute</li>
+      </ul>
+
+      <h2>Notre engagement écologique</h2>
+      <p class="engagement">Chez Épicerie Générale, nous nous engageons à réduire notre impact environnemental. Nous privilégions les emballages recyclables et biodégradables, et nous encourageons nos clients à opter pour des options écologiques lors de leurs achats.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2023 Épicerie Générale. Tous droits réservés.</p>
+    <p>
+      <a href="/conditions-generales">Conditions générales</a> | 
+      <a href="/politique-confidentialite">Politique de confidentialité</a> | 
+      <a href="/contact">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>

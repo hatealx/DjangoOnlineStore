@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Déconnexion{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/logout.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="logout-container">
+    <h1>Déconnexion réussie</h1>
+    <p>
+        Vous avez été déconnecté avec succès.<br>
+        Vous pouvez <a href="{% url 'login' %}" class="btn btn-primary">vous reconnecter</a>.<br>
+        Ou <a href="{% url 'home' %}" class="btn btn-secondary">retourner à l'accueil</a>.
+    </p>
+</div>
+{% endblock %}

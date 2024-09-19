@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Paramètres du compte{% endblock %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>Paramètres du compte</h1>
+    
+    <div class="account-settings-actions">
+        <a href="{% url 'password_change' %}" class="btn btn-black">Changer le mot de passe</a>
+        <a href="" class="btn btn-danger">Supprimer le compte</a>
+    </div>
+
+    <div class="back-home">
+        <a href="{% url 'home' %}" class="btn btn-back-home">Retour à l'accueil</a>
+    </div>
+{% endblock %}

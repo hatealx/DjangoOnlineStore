@@ -1,0 +1,59 @@
+/* Centering the logout message */
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* Center it vertically */
+    max-width: 400px; /* Limit the width */
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styling the heading */
+.logout-container h1 {
+    color: #4a7c59; /* Your primary color */
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Styling the links/buttons */
+.btn-primary {
+    background-color: #4a7c59; /* Your primary color */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #366a4b; /* Darker shade on hover */
+}
+
+.btn-secondary {
+    background-color: #f4e285; /* Your secondary color */
+    color: #333;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #e0d970; /* Slightly darker shade on hover */
+}

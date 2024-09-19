@@ -1,0 +1,75 @@
+:root {
+    --primary-color: #4a7c59;
+    --secondary-color: #f4e285;
+    --text-color: #333;
+    --background-color: #f9f9f9;
+    --highlight-color: #a3ab40;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+main {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+
