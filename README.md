@@ -1,6 +1,4 @@
-Here’s a detailed and well-structured README file for your Django project. This README will guide users through setting up the project, understanding its purpose, and contributing to it. You can customize it further to suit your needs.
 
----
 
 # **Épicerie Générale ElizAb**
 
@@ -171,9 +169,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions or suggestions about this project, feel free to reach out to the repository owner:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **GitHub**: [your-github-username](https://github.com/your-github-username)
+- **Email**: [your-email@example.com](mailto:aatsou12@gmail)
 
----
 
-This README should provide a solid overview for your GitHub project, making it clear for other developers and contributors. Let me know if you'd like to add more sections or further details!
