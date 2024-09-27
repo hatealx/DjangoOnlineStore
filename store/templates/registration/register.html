@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block main %}
+    <div class="register-wrapper">
+        <div class="register-container">
+            <h1>Créer un compte</h1>
+            <p>Veuillez remplir le formulaire suivant pour vous inscrire :</p>
+            <form method="post" class="register-form">
+                {{ user_form.as_p }}
+                {% csrf_token %}
+                <p><input type="submit" value="Créer mon compte" class="btn btn-black"></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

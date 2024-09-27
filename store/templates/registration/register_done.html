@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register_done.css' %}">
+{% endblock %}
+
+{% block title %}Bienvenue{% endblock %}
+
+{% block main %}
+    <div class="welcome-wrapper">
+        <div class="welcome-container">
+            <h1>Bienvenue, {{ new_user.first_name }}!</h1>
+            <p>Votre compte a été créé avec succès.</p>
+            <p>Vous pouvez maintenant <a href="{% url 'login' %}" class="btn btn-black">vous connecter</a>.</p>
+        </div>
+    </div>
+{% endblock %}
