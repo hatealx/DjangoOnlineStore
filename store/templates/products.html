@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Épicerie Générale - Votre boutique en ligne de produits alimentaires</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <!-- Add Font Awesome for icons (if not already included) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Alimentation Générale ElizAb</h1>
+            <p>Votre boutique en ligne de produits alimentaires et divers de qualité</p>
+        </div>
+        
+        <div class="account">
+            {% if request.user.is_authenticated %}
+                <p>Bienvenue, {{ request.user.username }}</p>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-black">Se déconnecter</button>
+                </form>
+                <br>
+                <a href="{% url 'asetting' %}" class="btn btn-black">Paramètre de compte</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-black">Se connecter</a>
+                <a href="{% url 'register' %}" class="btn btn-black">Créer un Compte</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="?category={{ category.id }}">{{ category.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    
+    <main>
+        <section class="featured-products">
+            <h2>Nos produits vedettes</h2>
+            <div class="product-grid">
+                {% for product in products %}
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200" height="200">
+                        </div>
+                        <h3>{{ product.name }}</h3>
+                        <p class="price">{{ product.price }} FCfa</p>
+                        <a href="{% url 'order_product' product.id %}" class="btn btn-black">Commander</a>
+                    </div>
+                {% empty %}
+                    <p>Aucun produit disponible dans cette catégorie.</p>
+                {% endfor %}
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>© 2023 Épicerie Générale. Tous droits réservés.</p>
+        <p>
+            <a href="/conditions-generales">Conditions générales</a> | 
+            <a href="/politique-confidentialite">Politique de confidentialité</a> | 
+            <a href="/contact">Contact</a>
+        </p>
+    </footer>
+</body>
+</html>

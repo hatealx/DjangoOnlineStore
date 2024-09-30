@@ -1,16 +1,23 @@
 from django.shortcuts import render, redirect
-from .models import Product
+from .models import Product, Category
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserRegistrationForm
 
-
 def home(request):
+    return render(request, 'index.html')
+
+
+def store(request):
+    category_id = request.GET.get('category')
     products = Product.objects.all()
-    context = {
-        'products': products
-    }
-    return render(request, 'home.html', context=context)
+    
+    if category_id:
+        products = products.filter(category_id=category_id)
+
+    categories = Category.objects.all()
+    return render(request, 'products.html', {'products': products, 'categories': categories})
+
 
 def register(request):
     if request.method == 'POST':

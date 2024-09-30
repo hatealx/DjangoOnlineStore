@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Épicerie Générale - Votre boutique en ligne de produits alimentaires</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Alimentation Générale ElizAb</h1>
+            <p>Votre boutique en ligne de produits alimentaires et divers de qualité</p>
+        </div>
+        
+        <div class="account">
+            {% if request.user.is_authenticated %}
+                <p>Bienvenue, {{ request.user.username }}</p>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-black">Se déconnecter</button>
+                </form>
+                <br>
+                <a href="{% url 'asetting' %}" class="btn btn-black">Paramètre de compte</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-black">Se connecter</a>
+                <br>
+                <br>
+                <a href="{% url 'register' %}" class="btn btn-black">Créer un Compte</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Bienvenue chez Épicerie Générale ElizAb</h1>
+                <p>Votre destination pour des produits frais, bio et éthiques</p>
+                <br>
+                <a href="{% url 'store' %}" class="cta-button">Découvrir nos produits</a>
+                <br><br>
+                <div class="hero-image-container">
+                    <img src="{% static 'images/store.png' %}" alt="Produits frais d'Épicerie Générale ElizAb" class="hero-image">
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="featured-categories">
+            <h2>Nos Catégories Phares</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="{% static 'images/alg.jpg' %}" alt="Fruits et Légumes">
+                    <h3>Alimentation Générale</h3>
+                    <a href="" class="category-link">Explorer</a>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'images/electro.jpg' %}" alt="Fruits et Légumes">
+                    <h3>Electronique</h3>
+                    <a href="" class="category-link">Explorer</a>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'images/em.jpg' %}" alt="Fruits et Légumes">
+                    <h3>Electroménager</h3>
+                    <a href="" class="category-link">Explorer</a>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'images/cos.jpg' %}" alt="Fruits et Légumes">
+                    <h3>Produits Cosmétiques</h3>
+                    <a href="" class="category-link">Explorer</a>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'images/divers.jpeg' %}" alt="Fruits et Légumes">
+                    <h3>Divers</h3>
+                    <a href="" class="category-link">Explorer</a>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'images/divers.jpeg' %}" alt="Fruits et Légumes">
+                    <h3>Electroménager</h3>
+                    <a href="" class="category-link">Explorer</a>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'images/cos.jpg' %}" alt="Fruits et Légumes">
+                    <h3>Electroménager</h3>
+                    <a href="" class="category-link">Explorer</a>
+                </div>
+               <div class="category-card">
+                    <img src="{% static 'images/alg.jpg' %}" alt="Fruits et Légumes">
+                    <h3>Alimentation Générale</h3>
+                    <a href="" class="category-link">Explorer</a>
+                </div>
+                <!-- Add more category cards here -->
+            </div>
+        </section>
+
+        <section class="our-commitments">
+            <h2>Nos Engagements</h2>
+            <div class="commitment-grid">
+                <div class="commitment-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>100% Bio</h3>
+                    <p>Tous nos produits sont certifiés biologiques</p>
+                </div>
+                <div class="commitment-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Commerce Équitable</h3>
+                    <p>Nous soutenons les producteurs locaux et le commerce équitable</p>
+                </div>
+                <div class="commitment-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Zéro Déchet</h3>
+                    <p>Nous privilégions les emballages écologiques et réutilisables</p>
+                </div>
+                <div class="commitment-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Livraison Verte</h3>
+                    <p>Nos livraisons sont effectuées avec des véhicules électriques</p>
+                </div>
+            </div>
+        </section>
+
+
+        
+        <section class="featured-products">
+            <h2>Nos Produits du Moment</h2>
+            <div class="product-slider">
+                <div class="product-card">
+                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
+                    <h3>Nom du produit</h3>
+                    <p class="price">XX,XX €</p>
+                    <a href="" class="product-link">Voir le produit</a>
+                </div>
+                <div class="product-card">
+                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
+                    <h3>Nom du produit</h3>
+                    <p class="price">XX,XX €</p>
+                    <a href="" class="product-link">Voir le produit</a>
+                </div>
+                <div class="product-card">
+                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
+                    <h3>Nom du produit</h3>
+                    <p class="price">XX,XX €</p>
+                    <a href="" class="product-link">Voir le produit</a>
+                </div>
+                <div class="product-card">
+                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
+                    <h3>Nom du produit</h3>
+                    <p class="price">XX,XX €</p>
+                    <a href="" class="product-link">Voir le produit</a>
+                </div>
+                <div class="product-card">
+                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
+                    <h3>Nom du produit</h3>
+                    <p class="price">XX,XX €</p>
+                    <a href="" class="product-link">Voir le produit</a>
+                </div>
+                <div class="product-card">
+                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
+                    <h3>Nom du produit</h3>
+                    <p class="price">XX,XX €</p>
+                    <a href="" class="product-link">Voir le produit</a>
+                </div>
+                <div class="product-card">
+                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
+                    <h3>Nom du produit</h3>
+                    <p class="price">XX,XX €</p>
+                    <a href="" class="product-link">Voir le produit</a>
+                </div>
+                
+                
+                
+                <!-- Add more product cards here -->
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>Ce que disent nos clients</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <img src="{% static 'images/c1.jpg' %}" alt="Nom du client" class="customer-image">
+                    <p class="testimonial-text">"J'adore la qualité des produits et le service exceptionnel d'ElizAb!"</p>
+                    <p class="customer-name">- Jane M.</p>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <img src="{% static 'images/c2.jpg' %}" alt="Nom du client" class="customer-image">
+                        <p class="testimonial-text">"ElizAb m'a permis de découvrir des produits bio incroyables! La livraison est rapide et fiable!"</p>
+                        <p class="customer-name">- Marie D.</p>
+                    </div>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <img src="{% static 'images/c3.jpg' %}" alt="Nom du client" class="customer-image">
+                            <p class="testimonial-text">"Les produits diversifiés et l'excellent service client font d'ElizAb notre boutique préférée!"</p>
+                            <p class="customer-name">- Michael j.</p>
+                    </div>
+                    
+                    
+                </div>
+               
+                <!-- Add more testimonial cards here -->
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Prêt à découvrir nos produits ?</h2>
+            <p>Rejoignez-nous pour une expérience d'achat unique et éco-responsable</p>
+            <a href="{% url 'store' %}" class="cta-button">Visiter notre boutique</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 Épicerie Générale ElizAb. Tous droits réservés.</p>
+        <p>
+            <a href="">Conditions générales</a> | 
+            <a href="">Politique de confidentialité</a> | 
+            <a href="">Contact</a>
+        </p>
+    </footer>
+</body>
+</html>

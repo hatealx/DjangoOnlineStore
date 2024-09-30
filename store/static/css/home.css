@@ -27,6 +27,15 @@ header {
   flex-wrap: wrap;
 }
 
+
+
+
+
+
+
+
+
+
 .header-content {
   text-align: center;
   flex: 1;
@@ -70,6 +79,52 @@ nav ul li a {
   text-decoration: none;
   font-weight: bold;
 }
+
+
+
+
+
+
+
+
+
+.category-filter {
+  width: 200px;
+  float: left;
+  margin-right: 20px;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.category-filter h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.category-filter ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.category-filter ul li {
+  margin-bottom: 10px;
+}
+
+.category-filter ul li a {
+  color: #4a7c59;
+  text-decoration: none;
+}
+
+.category-filter ul li a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
 
 main {
   max-width: 100%;
@@ -182,3 +237,12 @@ footer {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
+
+
+
+
+
+
+
+
+
