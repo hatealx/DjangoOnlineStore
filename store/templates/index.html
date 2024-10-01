@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Épicerie Générale - Votre boutique en ligne de produits alimentaires</title>
+    <title>Élizab- Votre boutique en ligne de produits alimentaires</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>Alimentation Générale ElizAb</h1>
+            <h1>Boutique ElizAb</h1>
             <p>Votre boutique en ligne de produits alimentaires et divers de qualité</p>
         </div>
         
@@ -123,54 +123,19 @@
         </section>
 
 
-        
+
         <section class="featured-products">
             <h2>Nos Produits du Moment</h2>
+          
             <div class="product-slider">
-                <div class="product-card">
-                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
-                    <h3>Nom du produit</h3>
-                    <p class="price">XX,XX €</p>
-                    <a href="" class="product-link">Voir le produit</a>
-                </div>
-                <div class="product-card">
-                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
-                    <h3>Nom du produit</h3>
-                    <p class="price">XX,XX €</p>
-                    <a href="" class="product-link">Voir le produit</a>
-                </div>
-                <div class="product-card">
-                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
-                    <h3>Nom du produit</h3>
-                    <p class="price">XX,XX €</p>
-                    <a href="" class="product-link">Voir le produit</a>
-                </div>
-                <div class="product-card">
-                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
-                    <h3>Nom du produit</h3>
-                    <p class="price">XX,XX €</p>
-                    <a href="" class="product-link">Voir le produit</a>
-                </div>
-                <div class="product-card">
-                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
-                    <h3>Nom du produit</h3>
-                    <p class="price">XX,XX €</p>
-                    <a href="" class="product-link">Voir le produit</a>
-                </div>
-                <div class="product-card">
-                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
-                    <h3>Nom du produit</h3>
-                    <p class="price">XX,XX €</p>
-                    <a href="" class="product-link">Voir le produit</a>
-                </div>
-                <div class="product-card">
-                    <img src="{% static 'images/product1.jpg' %}" alt="Nom du produit">
-                    <h3>Nom du produit</h3>
-                    <p class="price">XX,XX €</p>
-                    <a href="" class="product-link">Voir le produit</a>
-                </div>
-                
-                
+                {% for product in featured_products %}
+                    <div class="product-card">
+                        <img src="{{product.image.url}}" alt="Nom du produit">
+                        <h3>{{product.name}}</h3>
+                        <p class="price">{{product.price}} Fcfa</p>
+                        <a href="" class="product-link">Voir le produit</a>
+                    </div>
+                {% endfor %}
                 
                 <!-- Add more product cards here -->
             </div>

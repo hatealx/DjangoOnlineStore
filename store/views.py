@@ -5,7 +5,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm
 
 def home(request):
-    return render(request, 'index.html')
+    featured_products = Product.objects.filter(featured=True).order_by('-date_added')[:8]
+    context = {'featured_products': featured_products}
+    return render(request, 'index.html', context=context)
+
+
 
 
 def store(request):
