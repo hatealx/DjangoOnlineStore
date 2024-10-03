@@ -37,7 +37,7 @@
     <main class="main-content">
         <section class="hero">
             <div class="hero-content">
-                <h1>Bienvenue chez Épicerie Générale ElizAb</h1>
+                <h1>Bienvenue á ElizAb</h1>
                 <p>Votre destination pour des produits frais, bio et éthiques</p>
                 <br>
                 <a href="{% url 'store' %}" class="cta-button">Découvrir nos produits</a>
@@ -55,42 +55,42 @@
                 <div class="category-card">
                     <img src="{% static 'images/alg.jpg' %}" alt="Fruits et Légumes">
                     <h3>Alimentation Générale</h3>
-                    <a href="" class="category-link">Explorer</a>
+                    <a href="{%url 'store'%}" class="category-link">Explorer</a>
                 </div>
                 <div class="category-card">
                     <img src="{% static 'images/electro.jpg' %}" alt="Fruits et Légumes">
                     <h3>Electronique</h3>
-                    <a href="" class="category-link">Explorer</a>
+                    <a href="{%url 'store'%}" class="category-link">Explorer</a>
                 </div>
                 <div class="category-card">
                     <img src="{% static 'images/em.jpg' %}" alt="Fruits et Légumes">
                     <h3>Electroménager</h3>
-                    <a href="" class="category-link">Explorer</a>
+                    <a href="{%url 'store'%}" class="category-link">Explorer</a>
                 </div>
                 <div class="category-card">
                     <img src="{% static 'images/cos.jpg' %}" alt="Fruits et Légumes">
                     <h3>Produits Cosmétiques</h3>
-                    <a href="" class="category-link">Explorer</a>
+                    <a href="{%url 'store'%}" class="category-link">Explorer</a>
                 </div>
                 <div class="category-card">
                     <img src="{% static 'images/divers.jpeg' %}" alt="Fruits et Légumes">
                     <h3>Divers</h3>
-                    <a href="" class="category-link">Explorer</a>
+                    <a href="{%url 'store'%}" class="category-link">Explorer</a>
                 </div>
                 <div class="category-card">
                     <img src="{% static 'images/divers.jpeg' %}" alt="Fruits et Légumes">
                     <h3>Electroménager</h3>
-                    <a href="" class="category-link">Explorer</a>
+                    <a href="{%url 'store'%}" class="category-link">Explorer</a>
                 </div>
                 <div class="category-card">
                     <img src="{% static 'images/cos.jpg' %}" alt="Fruits et Légumes">
                     <h3>Electroménager</h3>
-                    <a href="" class="category-link">Explorer</a>
+                    <a href="{%url 'store'%}" class="category-link">Explorer</a>
                 </div>
                <div class="category-card">
                     <img src="{% static 'images/alg.jpg' %}" alt="Fruits et Légumes">
                     <h3>Alimentation Générale</h3>
-                    <a href="" class="category-link">Explorer</a>
+                    <a href="{%url 'store'%}" class="category-link">Explorer</a>
                 </div>
                 <!-- Add more category cards here -->
             </div>
@@ -133,7 +133,7 @@
                         <img src="{{product.image.url}}" alt="Nom du produit">
                         <h3>{{product.name}}</h3>
                         <p class="price">{{product.price}} Fcfa</p>
-                        <a href="" class="product-link">Voir le produit</a>
+                        <a href="{% url 'detail_product' product.id %}" class="product-link">Voir le produit</a>
                     </div>
                 {% endfor %}
                 

@@ -1,0 +1,29 @@
+{%extends 'base2.html'%}
+
+{%block title%}Resultats de recherche{%endblock%}
+
+{%block content%}  
+<main>
+
+    <h1 class="text-center">Resultats de recherche pour "{{ query }}"</h1>
+    <section class="featured-products">
+        {% if products %}
+            <div class="product-grid">
+                {% for product in products %}
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200" height="200">
+                        </div>
+                        <h3>{{ product.name }}</h3>
+                        <p class="price">{{ product.price }} FCFA</p>
+                        <a href="{% url 'detail_product' product.id %}" class="btn btn-green">voir produit</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-products">Aucun produit trouvé dans cette catégorie.</p>
+        {% endif %}
+    </section>
+    
+</main>
+{%endblock%}

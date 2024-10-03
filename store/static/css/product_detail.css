@@ -1,0 +1,119 @@
+/* General Styling */
+.product-detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.product-detail-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail-info {
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-detail-info h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.product-detail-info p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.product-detail-info .product-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.product-detail-info .product-btn:hover {
+    background-color: #218838;
+}
+
+/* Related Products Section */
+.product-related-products {
+    margin-top: 50px;
+}
+
+.product-related-products h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.product-related-product-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-related-product-card {
+    width: 30%;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.product-related-product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-related-product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-related-product-card p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.product-related-product-card .product-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.product-related-product-card .product-btn:hover {
+    background-color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-detail-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-detail-info {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .product-related-product-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

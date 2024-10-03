@@ -1,0 +1,9 @@
+annotated-types==0.7.0
+
+asgiref==3.8.1
+
+
+decouple==0.0.7
+
+Django==5.1.1
+

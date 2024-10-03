@@ -1,0 +1,53 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %}
+    Détails du Produit | {{ product.name }}
+{% endblock %}
+{% block extra_css %}   
+    <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="product-detail">
+    <div class="product-detail-container">
+        <!-- Product Image -->
+        <div class="product-detail-image">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; max-width: 600px;">
+        </div>
+
+        <!-- Product Information -->
+        <div class="product-detail-info">
+            <h1>{{ product.name }}</h1>
+            <p><strong>Prix:</strong> {{ product.price }} FCFA</p>
+            <p><strong>Stock Disponible:</strong> {{ product.stock }} unités</p>
+            <p><strong>Date ajouté:</strong> {{ product.date_added|date:"d/m/Y" }}</p>
+
+            <!-- Optional Description -->
+            {% if product.description %}
+                <p><strong>Description:</strong> {{ product.description }}</p>
+            {% else %}
+                <p>Aucune description disponible pour ce produit.</p>
+            {% endif %}
+
+            <!-- Command Button -->
+            <a href="" class="product-btn">Commander</a>
+        </div>
+    </div>
+</section>
+
+<!-- Suggested Related Products -->
+<section class="product-related-products">
+    <h2>Produits similaires</h2>
+    <div class="product-related-product-grid">
+        {% for related_product in related_products %}
+            <div class="product-related-product-card">
+                <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}" width="200" height="200">
+                <p>{{ related_product.name }}</p>
+                <p>{{ related_product.price }} FCFA</p>
+                <a href="{% url 'detail_product' related_product.id %}" class="product-btn">Voir Produit</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

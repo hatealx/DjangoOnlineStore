@@ -1,17 +1,19 @@
 {% load static %}
+{% load store_tags %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Épicerie Générale ElizAb - Votre boutique en ligne</title>
+    <title>{%block title%}{%endblock%}</title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1>Boutique ElizAb</h1>
+            <h1>Alimentation Générale ElizAb</h1>
             <p>Votre boutique en ligne de produits alimentaires et divers de qualité</p>
         </div>
         
@@ -35,12 +37,10 @@
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">Catégories</a>
                 <div class="dropdown-content">
-                    {% for category in categories %}
-                        <a href="?category={{ category.id }}">{{ category.name }}</a>
-                    {% endfor %}
+                    {%get_categories%}
                 </div>
             </li>
-            <li><a href="">Find Us</a></li>
+            <li><a href="https://maps.app.goo.gl/HZkdDLk63YYQmW117" target="_blank">Find Us</a></li>
             {% if request.user.is_authenticated %}
                 <li><a href="{% url 'asetting' %}">Paramètre de Compte</a></li>
             {% else %}
@@ -51,43 +51,15 @@
 
     <!-- Add search form for products -->
     <section class="product-search">
-        <form method="GET" action="{% url 'search_products' %}">
+        <form method="GET" action="">
             <input type="text" name="query" placeholder="Rechercher un produit..." value="{{ request.GET.query|default:'' }}">
             <button type="submit">Rechercher</button>
         </form>
-</section>
+    </section>
     
 
     <main>
-        <section class="featured-products">
-            {% if products %}
-                <div class="product-grid">
-                    {% for product in products %}
-                        <div class="product-card">
-                            <div class="product-image-container">
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200" height="200">
-                            </div>
-                            <h3>{{ product.name }}</h3>
-                            <p class="price">{{ product.price }} FCFA</p>
-                            <a href="{% url 'detail_product' product.id %}" class="btn btn-green">voir produit</a>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <p class="no-products">Aucun produit trouvé dans cette catégorie.</p>
-            {% endif %}
-        </section>
-        
-
-        <section class="about-us">
-            <h2>À Propos de Nous</h2>
-            <p class="engagement">Nous nous engageons à fournir des produits de qualité tout en garantissant la satisfaction de nos clients.</p>
-            <ul class="features">
-                <li><i class="fas fa-shipping-fast"></i> Livraison rapide et fiable</li>
-                <li><i class="fas fa-hand-holding-usd"></i> Prix compétitifs</li>
-                <li><i class="fas fa-thumbs-up"></i> Produits de qualité supérieure</li>
-            </ul>
-        </section>
+        {%block content%}{%endblock%}
     </main>
 
     <footer>

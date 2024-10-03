@@ -21,6 +21,7 @@ class Product(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)  # When the product was added
     stock = models.PositiveIntegerField(default=0)  # Product stock
     featured = models.BooleanField(default=False)
+    description = models.TextField(blank=True, null=True)  # Optional description
 
     def __str__(self):
         

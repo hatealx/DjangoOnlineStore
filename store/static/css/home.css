@@ -8,12 +8,23 @@
   --button-hover: #444;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0 auto;
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 header {
@@ -79,7 +90,7 @@ nav ul li a:hover {
   display: none;
   position: absolute;
   background-color: var(--background-color);
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   min-width: 160px;
 }
@@ -90,6 +101,14 @@ nav ul li a:hover {
   text-decoration: none;
   display: block;
 }
+.no-products {
+  text-align: center;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%; /* Make sure it takes up the full width of the container */
+  max-width: 600px; /* Optional: limit width */
+}
+
 
 .dropdown-content a:hover {
   background-color: var(--highlight-color);
@@ -98,9 +117,6 @@ nav ul li a:hover {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-
-
 
 .product-search {
   text-align: center;
@@ -131,10 +147,8 @@ nav ul li a:hover {
   background-color: var(--highlight-color);
 }
 
-
-
-
 main {
+  flex: 1;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
@@ -155,7 +169,7 @@ main {
 .product-card {
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   text-align: center;
   transition: transform 0.3s ease-in-out;
@@ -176,6 +190,7 @@ main {
 .price {
   font-weight: bold;
   color: var(--primary-color);
+  margin-bottom: 20px;
 }
 
 .btn {
@@ -243,8 +258,11 @@ footer {
   background-color: var(--primary-color);
   color: white;
   text-align: center;
-  padding: 1rem;
+  padding: 2rem;
   margin-top: 2rem;
+  position: relative;
+  width: 100%;
+  bottom: 0;
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Product, Category
 from django.contrib.auth.decorators import login_required
 
@@ -11,6 +11,13 @@ def home(request):
 
 
 
+
+
+def search_products(request):
+    query = request.GET.get('query', '')
+    products = Product.objects.filter(name__icontains=query) if query else Product.objects.all()
+    categories = Category.objects.all()
+    return render(request, 'search_results.html', {'products': products, 'query': query, categories: categories})
 
 def store(request):
     category_id = request.GET.get('category')
@@ -60,3 +67,12 @@ def account_setting(request):
     return render(request, 'registration/account_settings.html')
 
 
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    related_products = Product.objects.filter(category=product.category).exclude(id=product.id)[:4]  # Limit to 4 related products
+
+    return render(request, 'product_detail.html', {
+        'product': product,
+        'related_products': related_products
+    })

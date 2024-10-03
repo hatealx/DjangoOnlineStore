@@ -73,3 +73,11 @@ main {
     }
 }
 
+.no-products {
+    text-align: center;
+    margin: 0 auto;
+    background-color: aquamarine;
+    padding: 1rem;
+    border-radius: 5px;
+    width: fit-content;
+}
