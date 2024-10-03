@@ -1,0 +1,351 @@
+[
+{
+  "model": "store.category",
+  "pk": 1,
+  "fields": {
+    "name": "Electronique",
+    "description": ""
+  }
+},
+{
+  "model": "store.category",
+  "pk": 2,
+  "fields": {
+    "name": "Alimentation Géneral",
+    "description": ""
+  }
+},
+{
+  "model": "store.category",
+  "pk": 3,
+  "fields": {
+    "name": "Boisson",
+    "description": ""
+  }
+},
+{
+  "model": "store.category",
+  "pk": 4,
+  "fields": {
+    "name": "Produits Cosmetiques",
+    "description": ""
+  }
+},
+{
+  "model": "store.category",
+  "pk": 5,
+  "fields": {
+    "name": "Electroménager",
+    "description": ""
+  }
+},
+{
+  "model": "store.product",
+  "pk": 1,
+  "fields": {
+    "name": "Riz jasmine",
+    "price": "6000.00",
+    "image": "product_images/riz3jpeg.jpeg",
+    "added_by": 1,
+    "category": 2,
+    "date_added": "2024-09-14T15:23:58.673Z",
+    "stock": 0,
+    "featured": false,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 2,
+  "fields": {
+    "name": "Digestive biscuit",
+    "price": "300.00",
+    "image": "product_images/biscuits.jpeg",
+    "added_by": 1,
+    "category": 2,
+    "date_added": "2024-09-14T16:06:33.420Z",
+    "stock": 0,
+    "featured": false,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 3,
+  "fields": {
+    "name": "spagethi Bonita",
+    "price": "300.00",
+    "image": "product_images/spagethi.jpeg",
+    "added_by": 1,
+    "category": 2,
+    "date_added": "2024-09-14T16:08:32.485Z",
+    "stock": 0,
+    "featured": false,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 4,
+  "fields": {
+    "name": "huile 5 litres",
+    "price": "3500.00",
+    "image": "product_images/huile1.jpeg",
+    "added_by": 1,
+    "category": 2,
+    "date_added": "2024-09-14T16:10:36.680Z",
+    "stock": 0,
+    "featured": true,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 5,
+  "fields": {
+    "name": "oeuf plateau",
+    "price": "4000.00",
+    "image": "product_images/oeuf.jpeg",
+    "added_by": 1,
+    "category": 2,
+    "date_added": "2024-09-14T16:13:02.365Z",
+    "stock": 0,
+    "featured": true,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 6,
+  "fields": {
+    "name": "Lait peak",
+    "price": "450.00",
+    "image": "product_images/laitpeak1.jpeg",
+    "added_by": 1,
+    "category": 2,
+    "date_added": "2024-09-15T12:10:36.889Z",
+    "stock": 0,
+    "featured": false,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 7,
+  "fields": {
+    "name": "Télévison LG écran plat",
+    "price": "30000.00",
+    "image": "product_images/lg-tv.jpeg",
+    "added_by": 1,
+    "category": 1,
+    "date_added": "2024-09-27T22:32:57.372Z",
+    "stock": 5,
+    "featured": true,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 8,
+  "fields": {
+    "name": "Samsung TV cristal",
+    "price": "70000.00",
+    "image": "product_images/sm-tv.jpeg",
+    "added_by": 1,
+    "category": 1,
+    "date_added": "2024-09-27T22:36:23.866Z",
+    "stock": 2,
+    "featured": true,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 9,
+  "fields": {
+    "name": "Smartphone",
+    "price": "30000.00",
+    "image": "product_images/telphone1.jpeg",
+    "added_by": 1,
+    "category": 1,
+    "date_added": "2024-09-27T22:42:27.232Z",
+    "stock": 37,
+    "featured": true,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 10,
+  "fields": {
+    "name": "Smartphone Motorolla",
+    "price": "85000.00",
+    "image": "product_images/telphone2.jpeg",
+    "added_by": 1,
+    "category": 1,
+    "date_added": "2024-09-27T22:44:31.833Z",
+    "stock": 20,
+    "featured": true,
+    "description": null
+  }
+},
+{
+  "model": "store.product",
+  "pk": 11,
+  "fields": {
+    "name": "aspirateur",
+    "price": "100000.00",
+    "image": "product_images/aspirarateur.jpeg",
+    "added_by": 1,
+    "category": 5,
+    "date_added": "2024-09-30T16:38:53.114Z",
+    "stock": 0,
+    "featured": true,
+    "description": null
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$xLi1PdnzT2zTTGkBGGEUPy$tmaSJASIl/i72EHIxhZafTdH4VSr+oR+8NF0D4Rz/JU=",
+    "last_login": "2024-10-03T18:18:52.141Z",
+    "is_superuser": true,
+    "username": "user",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-09-14T15:15:00.255Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$rDHyJZs70Bzxmylso4y5Hw$IFcmLGdQWqsMaZXJHOqVvfsgbyhm8W35x6/erIeMF+8=",
+    "last_login": "2024-09-19T13:22:32.283Z",
+    "is_superuser": false,
+    "username": "abel",
+    "first_name": "",
+    "last_name": "",
+    "email": "aatsou12@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-17T16:37:31Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$zfTlwI0K7VYJMz460oZsO5$PwzoOa7c2M45aYlnUiiXeV41NS/VMiXdKaK7jCkMBJs=",
+    "last_login": "2024-09-19T13:40:01Z",
+    "is_superuser": false,
+    "username": "hatelor",
+    "first_name": "",
+    "last_name": "",
+    "email": "tikanima07@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-19T13:38:49Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$vq6Af0e9FVT2HhGdTsY0Vf$wIB2hlk5E5su0aB41Xo9cxFZmyl0xX3bc8xPHj/4T8I=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "abla",
+    "first_name": "akossiwa",
+    "last_name": "",
+    "email": "aatsou12@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-25T13:51:27.854Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$0V0f8JQ4s8mudr9O7JAVNf$oPssm6tJEGW9wIvSw5wl40eBhlESVznEpcyQDuDzJWo=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "aklesso",
+    "first_name": "gnanda",
+    "last_name": "",
+    "email": "aatsou12@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-25T13:54:29.138Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$gdTTB9sd9rZnXCIPpnJALO$OKCoVJ2DqeWA4ynv1eqLeRU1MaOidk+BYuGp5XrmlnI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "nounou",
+    "first_name": "nou",
+    "last_name": "",
+    "email": "aatsou12@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-25T15:49:35.524Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$gy01uCdl8mYx7b8WPYaGvq$BxP+IK4jZQfNk1L4fc62t3TQa+5/dZAK6J89+RWbZHk=",
+    "last_login": "2024-09-25T16:00:08.917Z",
+    "is_superuser": false,
+    "username": "charlote",
+    "first_name": "ATSOU",
+    "last_name": "",
+    "email": "aatsou12@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-25T15:59:20.124Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$poGOjSSooo248G6KBc6GQG$pp8ul4Eq2kRc+m5DWIAcB7cRPtK1GECMs6cXNKNQdvQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "dada",
+    "first_name": "afla",
+    "last_name": "",
+    "email": "aatsou12@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-25T16:19:40.780Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
