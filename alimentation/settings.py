@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'store.context_processors.categories_processor', 
             ],
         },
     },
@@ -80,11 +81,11 @@ WSGI_APPLICATION = 'alimentation.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 #default databse1
-#DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  }}
+DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  }}
 
 #postgrel render database2 
 import dj_database_url
-DATABASES = {'default': dj_database_url.parse(env('DATABASE_URL'))}
+#DATABASES = {'default': dj_database_url.parse(env('DATABASE_URL'))}
 
 
 # Password validation

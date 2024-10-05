@@ -10,14 +10,18 @@ def home(request):
     return render(request, 'index.html', context=context)
 
 
-
-
-
 def search_products(request):
     query = request.GET.get('query', '')
     products = Product.objects.filter(name__icontains=query) if query else Product.objects.all()
     categories = Category.objects.all()
     return render(request, 'search_results.html', {'products': products, 'query': query, categories: categories})
+
+
+def categories_processor(request):
+    categories = Category.objects.all()
+    return {'categories': categories}
+
+
 
 def store(request):
     category_id = request.GET.get('category')
@@ -76,3 +80,6 @@ def product_detail(request, product_id):
         'product': product,
         'related_products': related_products
     })
+
+
+
