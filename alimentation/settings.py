@@ -143,7 +143,7 @@ MEDIA_ROOT = BASE_DIR / 'media'  # The folder where media files will be stored
 
 LOGIN_REDIRECT_URL = '/'
 
-
+LOGIN_URL = 'login'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'aatsou12@gmail.com'

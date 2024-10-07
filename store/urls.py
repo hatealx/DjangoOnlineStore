@@ -20,6 +20,8 @@ urlpatterns = [
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('detail/<int:product_id>', views.product_detail, name='detail_product'),
     #search products 
-    path('search/', views.search_products, name='search_products'), 
+    path('search/', views.search_products, name='search_products'),
+    path('commander/<int:product_id>', views.command, name='command'),
+    path('listes-des-commandes/', views.command_list, name='command_list'),
 
 ]

@@ -29,3 +29,14 @@ class Product(models.Model):
 
 
 
+
+
+class Command(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    details = models.TextField()  # User will write everything here (quantity, address, etc.)
+    created_at = models.DateTimeField(auto_now_add=True)  # To store when the command was made
+
+    def __str__(self):
+        return f'Command {self.id} by {self.user.username} for {self.product.name}'
+    

@@ -3,6 +3,8 @@ from .models import Product, Category
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserRegistrationForm
+from .models import Command
+from .forms import CommandForm
 
 def home(request):
     featured_products = Product.objects.filter(featured=True).order_by('-date_added')[:8]
@@ -83,3 +85,24 @@ def product_detail(request, product_id):
 
 
 
+@login_required
+def command(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        form = CommandForm(request.POST)
+        if form.is_valid():
+            command = form.save(commit=False)
+            command.user = request.user
+            command.product = product
+            command.save()
+            # Optional: Send an email here
+            return redirect('command_list')  # Redirect to user's command list after submitting
+    else:
+        form = CommandForm()
+
+    return render(request, 'command_product.html', {'product': product, 'form': form})
+
+@login_required
+def command_list(request):
+    commands = Command.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'command_list.html', {'commands': commands})

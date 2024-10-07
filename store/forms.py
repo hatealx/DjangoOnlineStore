@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django import forms
+from .models import Command
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password',widget=forms.PasswordInput)
@@ -13,3 +14,12 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError("Passwords don't match.")
         return cd['password2']
+
+
+class CommandForm(forms.ModelForm):
+    class Meta:
+        model = Command
+        fields = ['details']
+        widgets = {
+            'details': forms.Textarea(attrs={'placeholder': 'Entrer la quantité, l\'adresse, and autres detail de livraison'})
+        }
