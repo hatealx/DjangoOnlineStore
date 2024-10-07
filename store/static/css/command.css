@@ -1,0 +1,92 @@
+.command-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.command-product-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.command-product-info h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.command-product-image {
+    margin: 15px 0;
+}
+
+.command-product-image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.command-form .form-group {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.command-form label {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.command-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.command-form textarea:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.command-form .product-btn {
+    padding: 12px 25px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.command-form .product-btn:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 768px) {
+    .command-container {
+        padding: 15px;
+    }
+
+    .command-product-info h1 {
+        font-size: 1.6rem;
+    }
+
+    .command-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .command-form .product-btn {
+        font-size: 1rem;
+    }
+}

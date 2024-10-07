@@ -7,7 +7,17 @@
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 
+
 {% block main %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
     <div class="login-container">
         <h1>Se connecter</h1>
         {% if form.errors %}

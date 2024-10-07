@@ -1,4 +1,24 @@
-/* Centering the login form */
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.messages li {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+
+.error-message {
+    color: red; /* Adjust as per your design */
+    font-weight: bold;
+}
+
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -6,9 +26,9 @@
     justify-content: center;
     height: 80vh; /* Center it vertically */
     max-width: 400px; /* Limit the form width */
-    margin: 0 auto;
+    margin: 100 auto;
     background-color: #f9f9f9;
-    padding: 2rem;
+    padding: 6rem;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }

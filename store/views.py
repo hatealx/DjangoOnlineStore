@@ -1,10 +1,12 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse
 from .models import Product, Category
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserRegistrationForm
 from .models import Command
 from .forms import CommandForm
+from django.contrib import messages
 
 def home(request):
     featured_products = Product.objects.filter(featured=True).order_by('-date_added')[:8]
@@ -59,14 +61,7 @@ def register(request):
     
 
 
-@login_required(login_url='login')
-def order_product(request, product_id):
-    # Check if the user is a superuser
-    if request.user.is_superuser:
-        return redirect('home')  # Redirect superusers to home or any other page
-    
-    # Logic for regular users to order the product
-    return render(request, 'order.html', {})
+
 
 
 def account_setting(request):
@@ -84,9 +79,14 @@ def product_detail(request, product_id):
     })
 
 
-
-@login_required
 def command(request, product_id):
+    if not request.user.is_authenticated:
+        # Show the message
+        messages.info(request, "Veuillez vous connecter pour commander ce produit.")
+        print("hello######################")
+        # Redirect to the login page, with a 'next' parameter to return back
+        return redirect(f'{reverse("login")}?next={request.path}')
+
     product = get_object_or_404(Product, id=product_id)
     if request.method == 'POST':
         form = CommandForm(request.POST)

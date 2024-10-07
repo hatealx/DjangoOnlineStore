@@ -1,0 +1,38 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %}
+    Commander | {{ product.name }}
+{% endblock %}
+{% block extra_css %}   
+    <link rel="stylesheet" href="{% static 'css/command.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="command-page">
+    <div class="command-container">
+        <!-- Product Information and Image -->
+        <div class="command-product-info">
+            <h1>Commander {{ product.name }}</h1>
+            <p><strong>Prix:</strong> {{ product.price }} FCFA</p>
+            <p><strong>Stock Disponible:</strong> {{ product.stock }} unités</p>
+            
+            <!-- Small Product Image -->
+            <div class="command-product-image">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="150" height="150">
+            </div>
+        </div>
+
+        <!-- Command Form -->
+        <div class="command-form">
+            <form method="POST" action="{% url 'command' product.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="command_details">Entrez vos informations (Quantité, Adresse, etc.) :</label>
+                    <textarea name="command_details" id="command_details" rows="5" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="product-btn">Envoyer la commande</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
