@@ -1,92 +1,127 @@
+/* General Styles */
+.command-page {
+    padding: 30px 0;
+    background-color: #f5f5f5; /* Adjust this to match your website's background color */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
 .command-container {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    max-width: 600px; /* Reduced max-width for a more compact form */
+    width: 100%;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Product Info */
 .command-product-info {
-    text-align: center;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .command-product-info h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.command-product-info p {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 5px 0;
 }
 
 .command-product-image {
-    margin: 15px 0;
+    margin-top: 20px;
+    text-align: center;
 }
 
-.command-product-image img {
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    object-fit: cover;
+.product-image {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
 }
 
-.command-form .form-group {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+/* Form Styles */
+.command-form {
+    background-color: #fff; /* Changed to white to match the container background */
+    padding: 20px 0; /* Removed horizontal padding, kept some vertical padding */
+    border-radius: 10px;
 }
 
-.command-form label {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 5px;
+.form-group {
+    margin-bottom: 20px;
 }
 
-.command-form textarea {
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.form-control {
     width: 100%;
-    padding: 12px;
+    padding: 10px 12px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease;
+    color: #555;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
 }
 
-.command-form textarea:focus {
-    border-color: #28a745;
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.25);
     outline: none;
 }
 
-.command-form .product-btn {
-    padding: 12px 25px;
-    background-color: #28a745;
-    color: #fff;
-    border-radius: 6px;
-    border: none;
+.product-btn {
+    display: inline-block;
+    padding: 12px 30px;
     font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 100%;
 }
 
-.command-form .product-btn:hover {
+.product-btn:hover {
     background-color: #218838;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
 }
 
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .command-container {
-        padding: 15px;
+        padding: 20px;
     }
 
     .command-product-info h1 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
-    .command-form textarea {
-        font-size: 0.9rem;
+    .form-group label {
+        font-size: 0.95rem;
     }
 
-    .command-form .product-btn {
-        font-size: 1rem;
+    .product-btn {
+        padding: 15px 0;
+        font-size: 1.1rem;
     }
 }

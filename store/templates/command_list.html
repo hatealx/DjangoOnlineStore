@@ -1,0 +1,30 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}
+    Mes Commandes
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/command_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="command-list-section">
+    <h1>Mes Commandes</h1>
+    {% if commands %}
+        <div class="command-list">
+            {% for command in commands %}
+                <div class="command-item">
+                    <h2>{{ command.product.name }}</h2>
+                    <p><strong>Prix:</strong> {{ command.product.price }} FCFA</p>
+                    <p><strong>Détails:</strong> {{ command.details }}</p>
+                    <p><strong>Date de commande:</strong> {{ command.created_at|date:"d/m/Y H:i" }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Vous n'avez aucune commande pour l'instant.</p>
+    {% endif %}
+</section>
+{% endblock %}
