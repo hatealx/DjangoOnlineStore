@@ -43,6 +43,8 @@
             <li><a href="https://maps.app.goo.gl/HZkdDLk63YYQmW117" target="_blank">Find Us</a></li>
             {% if request.user.is_authenticated %}
                 <li><a href="{% url 'asetting' %}">Paramètre de Compte</a></li>
+                <li><a href="{% url 'asetting' %}">Paramètre de Compte</a></li>
+                <li><a href="{% url 'orders' %}">Mes commandes</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}">Se connecter</a></li>
             {% endif %}
