@@ -1,35 +1,18 @@
 {% extends 'base2.html' %}
 {% load static %}
-
-{% block title %}Mes Commandes{% endblock %}
-
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/command_list.css' %}">
+{% block title %}
+    Commande Confirmée
 {% endblock %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/command_done.css' %}">
+{% endblock %}
 {% block content %}
-<section class="command-list-section">
-    <h1>Mes Commandes</h1>
-    {% if commands %}
-        <div class="command-grid">
-            {% for command in commands %}
-                <div class="command-card">
-                    <img src="{{ command.product.image.url }}" alt="{{ command.product.name }}" class="product-image">
-                    <div class="command-details">
-                        <h2>{{ command.product.name }}</h2>
-                        <p class="price">{{ command.product.price }} FCFA</p>
-                        <p class="details">{{ command.details }}</p>
-                        <p class="date">Commandé le {{ command.created_at|date:"d/m/Y H:i" }}</p>
-                        <form method="post" action="{% url 'delete_command' command.id %}">
-                            {% csrf_token %}
-                            <button type="submit" class="delete-btn">Supprimer</button>
-                        </form>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p class="no-commands">Vous n'avez aucune commande pour l'instant.</p>
-    {% endif %}
-</section>
+<div class="command-confirmation">
+    <h1>Merci {{request.user}}  pour votre commande !</h1>
+    <p>Votre commande a bien été reçue. Nous vous contacterons bientôt pour la livraison. Nous vous avons envoyer un mail {{request.user.email}} pour confirmer votre commande.</p>
+    <div class="confirmation-actions">
+        <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
+        <a href="{% url 'orders' %}" class="btn">Voir toutes vos commandes</a>
+    </div>
+</div>
 {% endblock %}
