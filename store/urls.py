@@ -23,7 +23,7 @@ urlpatterns = [
     path('search/', views.search_products, name='search_products'),
     path('commander/<int:product_id>', views.command, name='command'),
     #command
-    path('commande-effectuée/', views.command_done, name='command_done'),
+    path('commande-effectuee/', views.command_done, name='command_done'),
     path('listes-des-commandes/', views.command_list, name='orders'),
 
 ]

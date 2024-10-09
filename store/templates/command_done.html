@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 <div class="command-confirmation">
-    <h1>Merci{{request.user}} pour votre commande !</h1>
+    <h1>Merci {{request.user}}  pour votre commande !</h1>
     <p>Votre commande a bien été reçue. Nous vous contacterons bientôt pour la livraison.</p>
     <div class="confirmation-actions">
         <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
