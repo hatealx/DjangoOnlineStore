@@ -25,5 +25,6 @@ urlpatterns = [
     #command
     path('commande-effectuee/', views.command_done, name='command_done'),
     path('listes-des-commandes/', views.command_list, name='orders'),
+     path('supprimer-commande/<int:command_id>/', views.delete_command, name='delete_command'),
 
 ]

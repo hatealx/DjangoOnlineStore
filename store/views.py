@@ -179,3 +179,9 @@ def command_done(request):
 def command_list(request):
     commands = Command.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'command_list.html', {'commands': commands})
+
+
+def delete_command(request, command_id):
+    command = get_object_or_404(Command, id=command_id)
+    command.delete()
+    return redirect(reverse('orders'))
