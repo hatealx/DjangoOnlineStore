@@ -14,18 +14,16 @@
         <div class="command-grid">
             {% for command in commands %}
                 <div class="command-card">
-                    <div class="card-content">
-                        <img src="{{ command.product.image.url }}" alt="{{ command.product.name }}" class="product-image">
-                        <div class="command-details">
-                            <h2>{{ command.product.name }}</h2>
-                            <p class="price">{{ command.product.price }} FCFA</p>
-                            <p class="details">{{ command.details }}</p>
-                            <p class="date">Commandé le {{ command.created_at|date:"d/m/Y H:i" }}</p>
-                            <form method="post" action="{% url 'delete_command' command.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="delete-btn">Supprimer</button>
-                            </form>
-                        </div>
+                    <img src="{{ command.product.image.url }}" alt="{{ command.product.name }}" class="product-image">
+                    <div class="command-details">
+                        <h2>{{ command.product.name }}</h2>
+                        <p class="price">{{ command.product.price }} FCFA</p>
+                        <p class="details">{{ command.details }}</p>
+                        <p class="date">Commandé le {{ command.created_at|date:"d/m/Y H:i" }}</p>
+                        <form method="post" action="{% url 'delete_command' command.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-btn">Supprimer</button>
+                        </form>
                     </div>
                 </div>
             {% endfor %}
