@@ -174,6 +174,7 @@ def command(request, product_id):
 def command_done(request):
     return render(request, 'command_done.html')
 
+
 @login_required
 def command_list(request):
     commands = Command.objects.filter(user=request.user).order_by('-created_at')

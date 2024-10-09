@@ -9,7 +9,7 @@
 {% block content %}
 <div class="command-confirmation">
     <h1>Merci {{request.user}}  pour votre commande !</h1>
-    <p>Votre commande a bien été reçue. Nous vous contacterons bientôt pour la livraison.</p>
+    <p>Votre commande a bien été reçue. Nous vous contacterons bientôt pour la livraison. Nous vous avons envoyer un mail {request.user.email} pour confirmer votre commande.</p>
     <div class="confirmation-actions">
         <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
         <a href="{% url 'orders' %}" class="btn">Voir toutes vos commandes</a>
