@@ -108,12 +108,12 @@ def command(request, product_id):
                 Numéro de téléphone: {form.cleaned_data['phone_number']}
                 
                 Détails de la commande:
-                {form.cleaned_data['command_details']}  # Include the entire content entered by the user
+                {form.cleaned_data['command_details']}  
 
                 Produit commandé: {product.name}
                 Prix: {product.price} FCFA
             """
-
+            
             # Prepare the confirmation email content for the user
             user_email_subject = f"Confirmation de commande pour {product.name}"
             user_email_message = f"""
