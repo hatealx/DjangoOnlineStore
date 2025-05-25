@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "_base.html" %}
 {% load static %}
 {% block title %}Déconnexion{% endblock %}
 
@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'css/logout.css' %}">
 {% endblock %}
 
-{% block main %}
+{% block content %}
 <div class="logout-container">
     <h1>Déconnexion réussie</h1>
     <p>

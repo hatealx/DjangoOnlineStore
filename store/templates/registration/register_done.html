@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "_base.html" %}
 {% load static %}
 
 {% block extra_css %}
@@ -7,7 +7,7 @@
 
 {% block title %}Bienvenue{% endblock %}
 
-{% block main %}
+{% block content %}
     <div class="welcome-wrapper">
         <div class="welcome-container">
             <h1>Bienvenue, {{ new_user.first_name }}!</h1>
