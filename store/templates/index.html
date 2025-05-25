@@ -1,41 +1,16 @@
+{% extends "_base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Élizab- Votre boutique en ligne de produits alimentaires</title>
+
+{% block title %}Accueil - Boutique ElizAb{% endblock %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <h1>Boutique ElizAb</h1>
-            <p>Votre boutique en ligne de produits alimentaires et divers de qualité</p>
-        </div>
-        
-        <div class="account">
-            {% if request.user.is_authenticated %}
-                <p>Bienvenue, {{ request.user.username }}</p>
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-black">Se déconnecter</button>
-                </form>
-                <br>
-                <a href="{% url 'asetting' %}" class="btn btn-black">Paramètre de compte</a>
-            {% else %}
-                <a href="{% url 'login' %}" class="btn btn-black">Se connecter</a>
-                <br>
-                <br>
-                <a href="{% url 'register' %}" class="btn btn-black">Créer un Compte</a>
-            {% endif %}
-        </div>
-    </header>
+{% endblock %}
 
+{% block content %}
     <main class="main-content">
-        <section class="hero">
+        <section class="hero animate-on-scroll">
             <div class="hero-content">
                 <h1>Bienvenue á ElizAb</h1>
                 <p>Votre destination pour des produits frais, bio et éthiques</p>
@@ -49,7 +24,7 @@
             
         </section>
 
-        <section class="featured-categories">
+        <section class="featured-categories animate-on-scroll">
             <h2>Nos Catégories Phares</h2>
             <div class="category-grid">
                 <div class="category-card">
@@ -96,7 +71,7 @@
             </div>
         </section>
 
-        <section class="our-commitments">
+        <section class="our-commitments animate-on-scroll">
             <h2>Nos Engagements</h2>
             <div class="commitment-grid">
                 <div class="commitment-card">
@@ -124,7 +99,7 @@
 
 
 
-        <section class="featured-products">
+        <section class="featured-products animate-on-scroll">
             <h2>Nos Produits du Moment</h2>
           
             <div class="product-slider">
@@ -141,7 +116,7 @@
             </div>
         </section>
 
-        <section class="testimonials">
+        <section class="testimonials animate-on-scroll">
             <h2>Ce que disent nos clients</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
@@ -169,20 +144,10 @@
             </div>
         </section>
 
-        <section class="cta-section">
+        <section class="cta-section animate-on-scroll">
             <h2>Prêt à découvrir nos produits ?</h2>
             <p>Rejoignez-nous pour une expérience d'achat unique et éco-responsable</p>
             <a href="{% url 'store' %}" class="cta-button">Visiter notre boutique</a>
         </section>
     </main>
-
-    <footer>
-        <p>© 2023 Épicerie Générale ElizAb. Tous droits réservés.</p>
-        <p>
-            <a href="">Conditions générales</a> | 
-            <a href="">Politique de confidentialité</a> | 
-            <a href="">Contact</a>
-        </p>
-    </footer>
-</body>
-</html>
+{% endblock %}

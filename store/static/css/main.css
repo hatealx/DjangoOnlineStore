@@ -1,0 +1,1440 @@
+/* Import existing stylesheets */
+@import url('base.css');
+@import url('home.css');
+
+/* --- BASE STYLES (Mobile First) --- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Arial, sans-serif; /* Example font */
+    line-height: 1.6;
+    color: #333; /* Default text color */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Ensures main content takes up available space, pushing footer down */
+    width: 100%;
+    max-width: 1200px; /* Example max-width for content area */
+    margin: 0 auto; /* Center content */
+    padding: 1rem; /* Padding for content area */
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: #007bff; /* Example link color */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Darker shade on hover */
+}
+
+/* --- LAYOUT --- */
+/* Styles for header, footer, nav, sections, etc. */
+
+header {
+    background-color: #f8f9fa; /* Example background color */
+    padding: 1rem;
+    border-bottom: 1px solid #e7e7e7;
+    text-align: center; /* Default for mobile */
+}
+
+header .header-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+    color: #333;
+}
+
+header .header-content p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+header .account {
+    font-size: 0.9rem;
+}
+
+header .account p {
+    margin-bottom: 0.5rem;
+}
+
+header .account .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+header .account .btn-black {
+    background-color: #343a40;
+    color: white;
+}
+
+header .account .btn-black:hover {
+    background-color: #23272b;
+}
+
+nav {
+    background-color: #343a40; /* Dark background for nav */
+    padding: 0.5rem 1rem;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Will be overridden for mobile */
+    flex-direction: column; /* Mobile default: links stacked */
+    align-items: center; /* Mobile default: center links */
+}
+
+nav ul li {
+    margin: 0.5rem 0; /* Mobile default: spacing for stacked links */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+nav ul li a:hover,
+nav ul li a:focus, /* Added focus state */
+nav ul li a.active { /* Assuming an 'active' class for current page */
+    background-color: #495057;
+    color: #fff; /* Ensure text remains white or desired color */
+}
+
+/* Dropdown styles */
+nav .dropdown {
+    position: relative;
+}
+
+nav .dropdown-content {
+    /* display: none; Hidden by default - now using opacity and visibility */
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    transform: translateY(10px); /* Slight downward offset for slide-in effect */
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+nav .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease-in-out; /* Transition for links inside dropdown */
+}
+
+nav .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+nav .dropdown:hover .dropdown-content,
+nav .dropdown:focus-within .dropdown-content { /* Show on hover/focus for desktop */
+    /* display: block; Now handled by opacity/visibility */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Hamburger Menu Styles (Mobile Only) */
+.nav-toggle {
+    display: none; /* Hidden by default, shown in mobile media query below */
+    background: none;
+    border: none;
+    color: white; /* Color of the hamburger icon lines if using text or ::before/::after */
+    font-size: 1.5rem; /* Adjust as needed */
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001; /* Ensure it's above other header content if overlapping */
+    position: relative; /* For positioning hamburger lines */
+}
+
+.nav-toggle .hamburger-icon {
+    display: block;
+    width: 24px; /* Width of hamburger */
+    height: 2px; /* Thickness of lines */
+    background-color: #333; /* Color of lines - assuming header bg is light */
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-toggle .hamburger-icon::before,
+.nav-toggle .hamburger-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #333; /* Color of lines */
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.nav-toggle .hamburger-icon::before {
+    top: -8px; /* Space between lines */
+}
+
+.nav-toggle .hamburger-icon::after {
+    bottom: -8px; /* Space between lines */
+}
+
+/* Hamburger animation to 'X' when active */
+.nav-toggle.is-active .hamburger-icon {
+    background-color: transparent; /* Middle line disappears */
+}
+
+.nav-toggle.is-active .hamburger-icon::before {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.is-active .hamburger-icon::after {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* Initially hide nav links on mobile, show toggle */
+/* This will be handled by media queries more explicitly */
+
+/* Product Search Section */
+.product-search {
+    padding: 1rem;
+    background-color: #e9ecef; /* Light grey background */
+    text-align: center; /* Center form on mobile */
+}
+
+.product-search form {
+    display: flex;
+    flex-direction: column; /* Stack input and button on mobile */
+    align-items: center;
+    max-width: 500px; /* Limit max width on larger screens */
+    margin: 0 auto; /* Center the form */
+}
+
+.product-search input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem; /* Space between input and button on mobile */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.product-search button[type="submit"] {
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%; /* Full width on mobile */
+}
+
+.product-search button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Registration Page Specifics */
+/* account_settings.html */
+.account-settings-actions {
+    display: flex;
+    flex-direction: column; /* Stack buttons on mobile */
+    gap: 0.5rem; /* Space between buttons */
+    margin-bottom: 1.5rem;
+}
+
+.account-settings-actions .btn {
+    /* General .btn styles apply for width: 100% on mobile */
+    margin-top: 0; /* Override general button margin-top if needed */
+}
+
+.back-home {
+    margin-top: 1.5rem;
+    text-align: center; /* Center the back home link/button */
+}
+
+
+/* Command Done Page */
+.command-confirmation {
+    max-width: 700px; /* Limit width of confirmation box */
+    margin: 2rem auto; /* Center container */
+    padding: 2rem;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.command-confirmation h1 {
+    font-size: 1.8rem;
+    color: #28a745; /* Green color for success */
+    margin-bottom: 1rem;
+}
+
+.command-confirmation p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.confirmation-actions .btn {
+    margin: 0.5rem;
+    /* General .btn styles will apply for width and responsiveness */
+}
+
+
+/* --- COMPONENTS --- */
+/* Styles for buttons, cards, forms, etc. */
+
+/* General Form Styles */
+form {
+    margin-bottom: 1rem; /* Add some space below forms */
+}
+
+form p { /* Django forms often wrap fields in <p> tags */
+    margin-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="tel"], /* Added for phone numbers */
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem; /* Space below input fields */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none; /* Remove default outline */
+}
+
+textarea {
+    min-height: 100px; /* Default min height for textareas */
+}
+
+/* General Button Styles (can be extended by .btn, .btn-black, etc.) */
+button,
+input[type="submit"],
+.btn { /* General class for button-like links */
+    display: inline-block;
+    width: 100%; /* Mobile first: full width */
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff; /* Default button color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem; /* Space above buttons */
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.2s ease-in-out;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+button:focus,
+input[type="submit"]:focus,
+.btn:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.35); /* Focus ring */
+}
+
+button:active,
+input[type="submit"]:active,
+.btn:active {
+    transform: translateY(0px); /* Press down effect */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Specific button types */
+.btn-black {
+    background-color: #343a40;
+    color: white;
+}
+.btn-black:hover {
+    background-color: #23272b;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Form container examples from registration templates */
+.login-container,
+.register-container,
+.password-reset-container,
+.password-change-container,
+.welcome-container, /* For register_done.html */
+.logout-container {
+    max-width: 500px;
+    margin: 2rem auto; /* Center form containers and add vertical margin */
+    padding: 2rem;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-container h1,
+.register-container h1,
+.password-reset-container h1,
+.password-change-container h1,
+.welcome-container h1,
+.logout-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+/* Messages framework styling */
+ul.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+ul.messages li {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateY(-10px); /* Initial offset for animation */
+    animation: fadeInMessage 0.5s ease-out forwards; /* Animation definition */
+}
+
+/* Define keyframes for message fade-in */
+@keyframes fadeInMessage {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay animation for subsequent messages if multiple appear */
+ul.messages li:nth-child(n+2) {
+    animation-delay: 0.2s; 
+}
+ul.messages li:nth-child(n+3) {
+    animation-delay: 0.4s;
+}
+
+
+ul.messages li.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+ul.messages li.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+ul.messages li.warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+ul.messages li.info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+
+/* Hero Section */
+.hero {
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: #f0f0f0; /* Light background for hero */
+}
+
+.hero .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.hero .hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.hero .cta-button { /* Specific styling for hero button if different from general .btn */
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.hero .cta-button:hover {
+    background-color: #0056b3;
+}
+
+.hero .hero-image-container {
+    margin-top: 1.5rem;
+}
+
+.hero .hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+/* Featured Categories & Commitments (Shared Grid Styling) */
+.featured-categories,
+.our-commitments,
+.testimonials, /* Already has .testimonial-grid */
+.featured-products { /* Already has .product-grid/.product-slider */
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.featured-categories h2,
+.our-commitments h2,
+.testimonials h2,
+.featured-products h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Grid for commitments & features list in products.html */
+.commitment-grid,
+.features { /* From products.html about-us section */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.commitment-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    width: 100%; /* Mobile: full width */
+    text-align: center;
+}
+
+.commitment-card i, /* Font Awesome icons */
+.features li i {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.commitment-card h3,
+.features li h3 { /* Assuming h3 might be used in features list items */
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.commitment-card p,
+.features li p { /* Assuming p might be used in features list items */
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Styling for .about-us section in products.html */
+.about-us {
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: #f8f9fa; /* Slightly different background */
+}
+
+.about-us h2 { /* Common section title style already applied */
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.about-us .engagement {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    max-width: 800px; /* Limit width of this paragraph */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+    justify-content: center; /* Center items in the flex container */
+}
+
+.features li {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    width: 100%; /* Mobile: full width */
+    margin-bottom: 1rem; /* Space between items when stacked */
+    text-align: center;
+}
+
+.features li i { /* Icon styling already covered by .commitment-card i */
+    display: block; /* Ensure icon is on its own line or easily centered */
+}
+
+/* General utility classes */
+.text-center {
+    text-align: center;
+}
+
+/* Scroll Animation States */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px); /* Start slightly lower */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animations for items within a scrolled section (optional) */
+/* Example: if cards inside a section should animate one by one */
+.animate-on-scroll.is-visible .product-card, /* Assuming .product-card is child of .animate-on-scroll */
+.animate-on-scroll.is-visible .category-card,
+.animate-on-scroll.is-visible .commitment-card,
+.animate-on-scroll.is-visible .testimonial-card {
+    /* This requires individual elements to be observed or a more complex JS */
+    /* For now, the whole section animates. Individual card animations can be a refinement. */
+}
+
+/* No products message */
+.no-products { /* Also used for no search results */
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    padding: 2rem;
+    min-height: 200px; /* Ensure it takes some space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Product Detail Page */
+.product-detail-container {
+    display: flex;
+    flex-direction: column; /* Stack image and info on mobile */
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.product-detail-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.product-detail-info h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+.product-detail-info p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.product-detail-info p strong {
+    color: #333;
+}
+
+.product-detail-info .product-btn { /* Specific button in product detail */
+    margin-top: 1rem;
+    /* General .btn styles will apply for width, padding etc. */
+}
+
+/* Related Products Section */
+.product-related-products {
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: #f8f9fa; /* Light background */
+}
+
+.product-related-products h2, /* Common section title style */
+.search-results-title { /* For h1 in search_results.html */
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center; /* Ensure titles are centered */
+}
+
+.product-related-product-grid { /* Uses .product-grid styles by default if classes are shared */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* Center cards if not filling whole row */
+}
+
+/* .product-related-product-card is now part of the common .product-card styling */
+
+/* Command List Page */
+.command-list-section {
+    padding: 1rem;
+}
+
+.command-list-section h1 { /* Similar to .search-results-title */
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.command-grid {
+    display: grid; /* Using grid for potentially more complex card layouts */
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1.5rem;
+}
+
+.command-card {
+    display: flex;
+    flex-direction: column; /* Stack image and details on mobile */
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.command-card .product-image {
+    max-width: 100px; /* Smaller image for command list */
+    height: auto;
+    border-radius: 4px;
+    margin-right: 1rem; /* Space between image and details on larger screens */
+    margin-bottom: 1rem; /* Space below image on mobile */
+    align-self: center; /* Center image on mobile */
+}
+
+.command-card .command-details {
+    flex-grow: 1; /* Details take remaining space */
+}
+
+.command-card .command-details h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.command-card .command-details .price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 0.25rem;
+}
+
+.command-card .command-details .details,
+.command-card .command-details .date {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.25rem;
+    line-height: 1.5;
+}
+
+.command-card form { /* Form for delete button */
+    margin-top: 0.75rem;
+    margin-bottom: 0; /* Reset form margin */
+}
+
+.command-card .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    /* General .btn styles will apply for width on mobile, then auto on larger */
+}
+.command-card .delete-btn:hover {
+    background-color: #c82333;
+}
+
+.no-commands { /* Similar to .no-products */
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    padding: 2rem;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Product Grids and Cards */
+.product-grid,
+.category-grid, /* Assuming similar styling needed */
+.testimonial-grid, /* Assuming similar styling needed */
+.product-slider { /* Treat slider as a grid for responsiveness */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Space between cards */
+    padding: 1rem 0; /* Padding above/below the grid */
+}
+
+.product-card,
+.category-card,
+.testimonial-card,
+.product-related-product-card { /* Add related card to common styling */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    width: 100%; /* Mobile: full width, single column */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover,
+.category-card:hover,
+.testimonial-card:hover,
+.commitment-card:hover, /* Added hover for commitment cards */
+.features li:hover, /* Added hover for features list items */
+.product-related-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+
+.product-card img,
+.category-card img,
+.testimonial-card img.customer-image,
+.product-related-product-card img { /* Add related card to common styling */
+    /* max-width: 100%; */ /* This is too generic, specific sizes below */
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    align-self: center; /* Center image within card */
+}
+
+.product-card .product-image-container { /* From products.html */
+    margin-bottom: 0.75rem;
+}
+.product-card .product-image-container img {
+    max-width: 200px; /* Control size of product image */
+    max-height: 200px;
+    object-fit: contain; /* Ensure aspect ratio is maintained */
+    margin-left: auto;
+    margin-right: auto;
+}
+.product-related-product-card img { /* Specific for related product card images */
+    max-width: 150px; 
+    max-height: 150px;
+    object-fit: contain;
+}
+
+
+.product-card h3,
+.category-card h3,
+.testimonial-card p.customer-name, /* Or other main text */
+.product-related-product-card p:first-of-type { /* Product name in related card */
+    font-size: 1.2rem; /* Default size */
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+.product-related-product-card p:first-of-type { /* Override for related card product name if needed */
+    font-size: 1rem; 
+    font-weight: bold;
+}
+
+
+.product-card .price,
+.product-related-product-card p:nth-of-type(2) { /* Price in related card */
+    font-size: 1.1rem; /* Default size */
+    color: #007bff;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+}
+.product-related-product-card p:nth-of-type(2) { /* Override for related card price if needed */
+    font-size: 0.9rem;
+}
+
+.product-card .btn,
+.category-card .category-link,
+.product-related-product-card .product-btn { /* Add related card to common styling */
+    margin-top: auto; /* Push button to bottom of card */
+    width: auto; /* Override general button full width for cards */
+    align-self: center;
+}
+.product-related-product-card .product-btn { /* Specific padding for related card button */
+     padding: 0.5rem 1rem; 
+     font-size: 0.9rem;
+}
+
+
+/* --- MEDIA QUERIES --- */
+
+/* Medium devices (tablets, 601px and up) */
+@media (min-width: 601px) {
+    .command-list-section h1 {
+        font-size: 2rem;
+    }
+
+    .command-card {
+        flex-direction: row; /* Image and details side-by-side */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .command-card .product-image {
+        margin-bottom: 0; /* Remove bottom margin for side-by-side layout */
+        align-self: flex-start; /* Align image to top */
+    }
+    
+    /* Optionally, if command grid should go to two columns: */
+    /* .command-grid { grid-template-columns: repeat(2, 1fr); } */
+    /* For now, keeping it single column for clarity of command details */
+
+/* Command Product Page */
+.command-page {
+    padding: 1rem;
+}
+
+.command-container {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: 1.5rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    max-width: 900px; /* Limit overall width */
+    margin: 1rem auto; /* Center container */
+}
+
+.command-product-info {
+    text-align: center; /* Center info on mobile */
+}
+
+.command-product-info h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+}
+
+.command-product-info p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+.command-product-info p strong {
+    color: #333;
+}
+
+.command-product-image {
+    margin-top: 1rem;
+}
+
+.command-product-image img {
+    max-width: 200px; /* Control image size */
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    margin-left: auto; /* Center image */
+    margin-right: auto;
+}
+
+.command-form .form-group { /* Assuming form inputs are wrapped in form-group divs */
+    margin-bottom: 1rem;
+}
+/* General form styles for label, input, textarea, button will apply */
+
+
+    .product-related-products h2,
+    .search-results-title {
+        font-size: 2rem;
+    }
+
+    .product-detail-container {
+        flex-direction: row; /* Image and info side-by-side */
+        align-items: flex-start; /* Align items to the top */
+    }
+
+    .product-detail-image {
+        flex-basis: 40%; /* Image takes up 40% of width */
+        /* max-width: 40%; */ /* Alternative way */
+    }
+
+    .product-detail-info {
+        flex-basis: 60%; /* Info takes up 60% of width */
+        /* max-width: 60%; */
+    }
+    .product-detail-info h1 {
+        font-size: 2rem;
+    }
+
+    .product-related-product-card {
+         width: calc(50% - 0.5rem); /* Two columns for related products */
+    }
+
+    .features li {
+        width: calc(50% - 0.5rem); /* Two columns for features */
+        margin-bottom: 0; /* Remove bottom margin as gap is used */
+    }
+
+    .hero .hero-content {
+        max-width: 80%; /* Don't let text get too wide */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .commitment-card {
+        width: calc(50% - 0.5rem); /* Two columns for commitment cards */
+    }
+
+    .product-card,
+    .category-card,
+    .testimonial-card {
+        width: calc(50% - 0.5rem); /* Two columns, considering the 1rem gap */
+    }
+
+    button,
+    input[type="submit"],
+    .btn {
+        width: auto; /* Allow buttons to size to content on larger screens */
+        min-width: 120px; /* Ensure a minimum clickable width */
+    }
+    
+    .product-search form {
+        flex-direction: row; /* Input and button side-by-side */
+    }
+
+    .product-search input[type="text"] {
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 0.5rem; /* Add space to the right of input */
+        flex-grow: 1; /* Allow input to take available space */
+        width: auto; /* Reset width */
+    }
+
+    .product-search button[type="submit"] {
+        width: auto; /* Reset width */
+    }
+
+    nav ul {
+        flex-direction: row; /* Horizontal links for tablet+ */
+        justify-content: center; /* Center links */
+    }
+
+    nav ul li {
+        margin: 0 0.5rem; /* Spacing for horizontal links */
+    }
+
+    .nav-toggle {
+        display: none; /* Hide hamburger on tablet+ */
+    }
+
+    /* Ensure nav links are visible on tablet+ */
+    nav ul {
+        display: flex !important; /* Important to override any mobile JS-driven hide */
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    header .header-content {
+        margin-bottom: 0; /* Reset margin for flex layout */
+    }
+
+    header .header-content h1 {
+        font-size: 2rem;
+    }
+
+    header .header-content p {
+        font-size: 1rem;
+        margin-bottom: 0; /* Reset margin for flex layout */
+    }
+
+    header .account {
+        display: flex; /* Align items in .account horizontally */
+        align-items: center;
+    }
+
+    header .account p {
+        margin-bottom: 0; /* Reset margin for flex layout */
+        margin-right: 0.5rem; /* Add some space between welcome message and button */
+    }
+    
+    header .account form {
+        margin-left: 0.5rem; /* Add some space if form follows text */
+    }
+}
+
+
+/* Mobile specific nav adjustments (max-width: 600px) */
+@media (max-width: 600px) {
+    nav#mainNav { /* Targeting the nav directly */
+        position: fixed; 
+        top: 0;
+        /* Starts off-screen to the left. transformX(100%) in .nav-open slides it into view. */
+        left: -100%; 
+        width: 80%; 
+        max-width: 300px;
+        height: 100vh;
+        background-color: #343a40;
+        padding-top: 3.5rem; /* Space for header/close button */
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        z-index: 1000;
+        overflow-y: auto;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    nav#mainNav.nav-open {
+        transform: translateX(100%); /* Slide in from left */
+    }
+
+    nav#mainNav ul { /* Ensure ul takes full height and centers items */
+        display: flex; 
+        flex-direction: column;
+        align-items: flex-start; /* Align links to the left */
+        padding: 1rem;
+        height: 100%;
+    }
+    
+    nav#mainNav ul li {
+        width: 100%; /* Make list items take full width for easier tapping */
+        margin: 0.5rem 0;
+    }
+    nav#mainNav ul li a {
+        display: block; /* Ensure links take full width of li */
+        padding: 0.75rem 1rem; /* Adjust padding for mobile */
+    }
+    nav#mainNav ul li a:focus { /* Explicit focus style for mobile nav links */
+        background-color: #5a6268; /* Slightly lighter than hover for distinction if needed */
+    }
+
+
+    .nav-toggle {
+        display: block; /* Show hamburger on mobile */
+        /* Position within the header is handled by its placement in HTML and header's flex properties */
+    }
+    
+    /* Mobile Dropdown Content - Accordion Style */
+    nav#mainNav .dropdown .dropbtn.nav-mobile-category-toggle { /* Specificity for the toggle */
+         /* Base styles from nav ul li a apply */
+    }
+    nav#mainNav .dropdown .dropbtn.nav-mobile-category-toggle:focus {
+        background-color: #5a6268; /* Consistent focus */
+    }
+    
+    nav#mainNav .dropdown .dropdown-content {
+        position: static; /* Remove absolute positioning for mobile */
+        background-color: #404040; /* Darker background for mobile dropdown */
+        box-shadow: none;
+        border-radius: 0;
+        /* Transitions for accordion */
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+    }
+
+    nav#mainNav .dropdown.is-open .dropdown-content {
+        max-height: 500px; /* Adjust as needed to fit content */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav#mainNav .dropdown:hover .dropdown-content,
+    nav#mainNav .dropdown:focus-within .dropdown-content {
+        /* Disable desktop hover/focus behavior for mobile dropdown content */
+        /* Let JS handle it */
+        display: none; 
+        opacity: 0;
+        visibility: hidden;
+    }
+     /* Re-enable for the .is-open state triggered by JS */
+    nav#mainNav .dropdown.is-open .dropdown-content {
+        display: block; /* Or flex/grid if needed for inner layout */
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+}
+
+
+/* Large devices (desktops, 993px and up) */
+@media (min-width: 993px) {
+    .command-confirmation h1 {
+        font-size: 2rem;
+    }
+    .command-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .command-product-info {
+        flex-basis: 40%;
+        text-align: left; /* Align text left on larger screens */
+    }
+    .command-product-info .command-product-image img {
+         margin-left: 0; /* Align image left */
+         margin-right: 0;
+    }
+    .command-form {
+        flex-basis: 60%;
+    }
+    .command-list-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .command-grid {
+        /* Still single column, but could go to 2 if desired for very large screens */
+        /* grid-template-columns: repeat(2, 1fr); */
+        /* max-width: 900px; */ /* Optional: limit width of single column list */
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+    }
+
+
+    .product-related-products h2,
+    .search-results-title {
+        font-size: 2.2rem;
+    }
+
+    .product-detail-info h1 {
+        font-size: 2.2rem;
+    }
+    .product-related-product-card { /* Already handled by .product-card */
+        /* width: calc(33.333% - 0.67rem); */ /* Three columns for related products */
+    }
+
+    .features li {
+        width: calc(33.333% - 0.67rem); /* Three columns for features */
+    }
+
+    .hero {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding: 3rem 2rem;
+    }
+
+    .hero .hero-content {
+        flex: 1;
+        padding-right: 2rem; /* Space between text and image */
+        max-width: 50%; /* Limit text width */
+        margin-left: 0;
+        margin-right: 0;
+    }
+     .hero .hero-content h1 {
+        font-size: 3rem;
+    }
+    .hero .hero-content p {
+        font-size: 1.3rem;
+    }
+
+    .hero .hero-image-container {
+        flex: 1;
+        margin-top: 0;
+        max-width: 50%;
+    }
+    
+    .commitment-card {
+        width: calc(25% - 0.75rem); /* Four columns for commitment cards */
+    }
+
+    .product-card,
+    .category-card,
+    .testimonial-card {
+        width: calc(33.333% - 0.67rem); /* Three columns */
+        /* For 4 columns: width: calc(25% - 0.75rem); */
+    }
+    
+    /* If product-slider has specific desktop styles, add here */
+    /* e.g. if it becomes a horizontal scroll with overflow */
+
+    nav {
+        padding: 0.5rem 2rem; /* Adjust padding for larger screens */
+    }
+
+    nav ul li a {
+        padding: 0.75rem 1.5rem; /* Larger clickable area */
+    }
+
+    header {
+        padding: 1.5rem 2rem; /* More padding on larger screens */
+    }
+
+    header .header-content h1 {
+        font-size: 2.2rem;
+    }
+
+    header .header-content p {
+        font-size: 1.1rem;
+    }
+
+    header .account .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+    }
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #343a40; /* Dark background for footer */
+    color: #f8f9fa; /* Light text color */
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom if content is short */
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #adb5bd; /* Lighter link color for footer */
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Specific styling for the second paragraph with links */
+footer p:last-child a:not(:last-child)::after {
+    content: " | ";
+    color: #6c757d; /* Separator color */
+    margin: 0 0.25rem;
+}
+
+@media (min-width: 601px) {
+    footer {
+        text-align: left; /* Align text to left on larger screens */
+    }
+
+    footer p {
+        display: inline; /* Attempt to make paragraphs inline */
+        margin-right: 1rem; /* Add some space between paragraphs if they wrap */
+    }
+    
+    /* This might not be perfect if the p tags contain many links,
+       but for short copyright and a few links it might work.
+       A better approach for complex footers would be flexbox. */
+    footer p:last-child {
+        display: block; /* Or keep as block and center if desired */
+        text-align: center; /* Center the links if they are on their own line */
+        margin-top: 0.5rem;
+    }
+}
+
+@media (min-width: 993px) {
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    footer p {
+        margin-bottom: 0; /* Reset margin for flex items */
+        margin-right: 0; /* Reset margin for flex items */
+    }
+
+    footer p:last-child {
+        text-align: right; /* Align links to the right */
+        margin-top: 0;
+    }
+}

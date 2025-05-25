@@ -1,63 +1,13 @@
+{% extends "_base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Épicerie Générale ElizAb - Votre boutique en ligne</title>
+
+{% block title %}Nos Produits - Boutique ElizAb{% endblock %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <h1>Boutique ElizAb</h1>
-            <p>Votre boutique en ligne de produits alimentaires et divers de qualité</p>
-        </div>
-        
-        <div class="account">
-            {% if request.user.is_authenticated %}
-                <p>Bienvenue, {{ request.user.username }}</p>
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-black">Se déconnecter</button>
-                </form>
-            {% else %}
-                <a href="{% url 'login' %}" class="btn btn-black">Se connecter</a>
-                <a href="{% url 'register' %}" class="btn btn-black">Créer un Compte</a>
-            {% endif %}
-        </div>
-    </header>
+{% endblock %}
 
-    <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Acceuil</a></li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Catégories</a>
-                <div class="dropdown-content">
-                    {% for category in categories %}
-                        <a href="?category={{ category.id }}">{{ category.name }}</a>
-                    {% endfor %}
-                </div>
-            </li>
-            <li><a href="">Find Us</a></li>
-            {% if request.user.is_authenticated %}
-                <li><a href="{% url 'asetting' %}">Paramètre de Compte</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Se connecter</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-
-    <!-- Add search form for products -->
-    <section class="product-search">
-        <form method="GET" action="{% url 'search_products' %}">
-            <input type="text" name="query" placeholder="Rechercher un produit..." value="{{ request.GET.query|default:'' }}">
-            <button type="submit">Rechercher</button>
-        </form>
-</section>
-    
-
+{% block content %}
     <main>
         <section class="featured-products">
             {% if products %}
@@ -89,10 +39,4 @@
             </ul>
         </section>
     </main>
-
-    <footer>
-        <p>© 2023 Épicerie Générale ElizAb. Tous droits réservés.</p>
-        <p><a href="/conditions-generales">Conditions générales</a> | <a href="/politique-confidentialite">Politique de confidentialité</a> | <a href="/contact">Contact</a></p>
-    </footer>
-</body>
-</html>
+{% endblock %}

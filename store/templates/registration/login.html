@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "_base.html" %}
 {% load static %}
 
 {% block title %}Se connecter | ElizAb{% endblock %}
@@ -8,7 +8,7 @@
 {% endblock %}
 
 
-{% block main %}
+{% block content %}
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
